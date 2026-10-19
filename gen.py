@@ -11,7 +11,7 @@ P = {
   ('Keine Erhebung von Daten durch die App', 'Die App erhebt keine personenbezogenen Daten und überträgt keine Daten an uns. Es gibt keine Werbung, keine Analyse- oder Tracking-Werkzeuge und keine Absturzberichte an Dritte.'),
   ('Daten auf deinem Gerät', 'Lernfortschritt, Einstellungen und Dateien, die du selbst hinzufügst (z. B. eigene EKG-Bilder oder Herzton-Aufnahmen), werden ausschließlich lokal auf deinem Gerät gespeichert. Wir haben darauf keinen Zugriff. Wenn du in den Android-Einstellungen die Sicherung über Google aktiviert hast, kann Android deinen Lernfortschritt in deiner Google-Sicherung speichern; das steuert Google bzw. dein Gerät, nicht wir. Eigene Dateien sind von der Sicherung ausgenommen. Mit „Fortschritt sichern“ in den Einstellungen kannst du eine Datei selbst exportieren.'),
   ('Käufe über Google Play', 'Abonnements und der einmalige Kauf werden über Google Play abgewickelt. Zahlungsdaten erhält ausschließlich Google. Die App erfährt nur, ob ein Kauf besteht, um die Vollversion freizuschalten. Es gilt die <a href="https://policies.google.com/privacy">Datenschutzerklärung von Google</a>.'),
-  ('Internetverbindung', 'Alle Inhalte liegen in der App und funktionieren offline. Eine Verbindung wird nur für Käufe und deren Wiederherstellung über Google Play genutzt sowie, wenn du selbst einen Link (z. B. zu einer Leitlinie oder Quelle) öffnest – dieser öffnet sich in deinem Browser.'),
+  ('Internetverbindung', 'Alle Inhalte liegen in der App und funktionieren offline. Eine Verbindung wird nur für Käufe und deren Wiederherstellung über Google Play genutzt sowie, wenn du selbst einen Link (z. B. zu einer Leitlinie oder Quelle) öffnest. Dieser öffnet sich in deinem Browser.'),
   ('Themenwünsche per E-Mail', 'Wenn du über „Thema wünschen“ eine E-Mail schreibst, öffnet sich dein E-Mail-Programm; die App selbst sendet nichts. Deine E-Mail-Adresse und deine Nachricht verwenden wir nur, um deinen Wunsch zu bearbeiten und dir zu antworten (Art. 6 Abs. 1 lit. f DSGVO), und löschen sie, wenn sie dafür nicht mehr benötigt werden.'),
   ('Berechtigungen', 'Die App nutzt nur den Internetzugriff (für Käufe) und die Google-Play-Abrechnung. Sie greift nicht auf Kamera, Mikrofon, Standort oder Kontakte zu. Eigene Dateien wählst du selbst über die Dateiauswahl von Android aus.'),
   ('Deine Rechte', 'Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, z. B. beim Landesbeauftragten für den Datenschutz und die Informationsfreiheit Baden-Württemberg.'),
@@ -76,7 +76,7 @@ nav = '<nav class="lang">' + ''.join(f'<a href="#{l}">{NAMES[l]}</a>' for l in P
 body = nav + ''.join(
     f'<section id="{l}" lang="{l}"><h1>{p["title"]}</h1><p>{p["intro"]}</p>' + ''.join(f'<h2>{h}</h2><p>{t}</p>' for h, t in p['sec']) + f'<p class="muted">{p["stand"]}: {DATE[l]}</p></section>'
     for l, p in P.items())
-open('datenschutz.html', 'w').write(page('Corsinura – Datenschutz / Privacy', body))
+open('datenschutz.html', 'w').write(page('Corsinura: Datenschutz / Privacy', body))
 body = nav + ''.join(
     f'<section id="{l}" lang="{l}"><h1>{h[0]}</h1><p>{h[1]}</p><footer><a href="datenschutz.html#{l}">{h[2]}</a><a href="impressum.html">{h[3]}</a><a href="mailto:{MAIL}">{h[4]}</a></footer></section>'
     for l, h in HOME.items())
