@@ -59,10 +59,10 @@ P = {
  'stand': 'Actualización'},
 }
 HOME = {
- 'de': ('Kardiologie verstehen – mit echten EKGs, Herztönen und Echos.', 'Lern-App für Android: über 1.300 echte 12-Kanal-EKGs, Herztöne mit Phonokardiogramm, Echo-Videos, interaktive Labore, Rechner und Scores, Fallbeispiele und Prüfungsmodus. Offline nutzbar, ohne Konto.', 'Datenschutzerklärung', 'Impressum', 'Kontakt'),
- 'en': ('Understand cardiology – with real ECGs, heart sounds and echoes.', 'Learning app for Android: over 1,300 real 12-lead ECGs, heart sounds with phonocardiogram, echo videos, interactive labs, calculators and scores, clinical cases and exam mode. Works offline, no account.', 'Privacy policy', 'Legal notice', 'Contact'),
- 'fr': ('Comprendre la cardiologie – avec de vrais ECG, bruits du cœur et échos.', 'Application d’apprentissage pour Android : plus de 1 300 vrais ECG 12 dérivations, bruits du cœur avec phonocardiogramme, vidéos d’échographie, labos interactifs, calculateurs et scores, cas cliniques et mode examen. Hors ligne, sans compte.', 'Politique de confidentialité', 'Mentions légales', 'Contact'),
- 'es': ('Entender la cardiología – con ECG, ruidos cardiacos y ecos reales.', 'Aplicación de aprendizaje para Android: más de 1.300 ECG reales de 12 derivaciones, ruidos cardiacos con fonocardiograma, vídeos de eco, laboratorios interactivos, cálculos y escalas, casos clínicos y modo examen. Sin conexión y sin cuenta.', 'Política de privacidad', 'Aviso legal', 'Contacto'),
+ 'de': ('Kardiologie verstehen. Mit echten EKGs, Herztönen und Echos.', 'Lern-App für Android: über 1.300 echte 12-Kanal-EKGs, Herztöne mit Phonokardiogramm, Echo-Videos, interaktive Labore, Rechner und Scores, Fallbeispiele und Prüfungsmodus. Offline nutzbar, ohne Konto.', 'Datenschutzerklärung', 'Impressum', 'Kontakt'),
+ 'en': ('Understand cardiology. With real ECGs, heart sounds and echoes.', 'Learning app for Android: over 1,300 real 12-lead ECGs, heart sounds with phonocardiogram, echo videos, interactive labs, calculators and scores, clinical cases and exam mode. Works offline, no account.', 'Privacy policy', 'Legal notice', 'Contact'),
+ 'fr': ('Comprendre la cardiologie. Avec de vrais ECG, bruits du cœur et échos.', 'Application d’apprentissage pour Android : plus de 1 300 vrais ECG 12 dérivations, bruits du cœur avec phonocardiogramme, vidéos d’échographie, labos interactifs, calculateurs et scores, cas cliniques et mode examen. Hors ligne, sans compte.', 'Politique de confidentialité', 'Mentions légales', 'Contact'),
+ 'es': ('Entender la cardiología. Con ECG, ruidos cardiacos y ecos reales.', 'Aplicación de aprendizaje para Android: más de 1.300 ECG reales de 12 derivaciones, ruidos cardiacos con fonocardiograma, vídeos de eco, laboratorios interactivos, cálculos y escalas, casos clínicos y modo examen. Sin conexión y sin cuenta.', 'Política de privacidad', 'Aviso legal', 'Contacto'),
 }
 def page(title, body, lang='de'):
     return f'''<!doctype html>
