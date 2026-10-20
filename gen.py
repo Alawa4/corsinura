@@ -2,7 +2,7 @@
 """Erzeugt index.html und datenschutz.html (4 Sprachen) – Quelle der Texte ist diese Datei."""
 import html
 DATE = {'de': '17. Oktober 2026', 'en': '17 October 2026', 'fr': '17 octobre 2026', 'es': '17 de octubre de 2026'}
-MAIL = 'corsinura@proton.me'
+MAIL = 'corsinura.app@gmail.com'
 NAMES = {'de': 'Deutsch', 'en': 'English', 'fr': 'Français', 'es': 'Español'}
 P = {
 'de': {'title': 'Datenschutzerklärung', 'intro': 'Corsinura ist eine Lern-App für Kardiologie (EKG, Herztöne, Echokardiographie). Sie funktioniert ohne Konto und ohne Anmeldung. Wir haben die App so gebaut, dass möglichst keine personenbezogenen Daten anfallen.',
