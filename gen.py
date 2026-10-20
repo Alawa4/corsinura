@@ -105,7 +105,7 @@ def form(l, i):
     return (f'<form class="contact" action="https://formspree.io/f/{FORM}" method="POST"><label>{i[4]}<input type="email" name="email" required></label>'
             f'<label>{i[5]}<textarea name="message" rows="5" required></textarea></label><input type="hidden" name="_language" value="{l}"><button type="submit">{i[6]}</button></form><p class="muted">{i[7]}</p>')
 body = nav + ''.join(
-    f'<section id="{l}" lang="{l}"><h1>{i[0]}</h1><h2>{i[1]}</h2><p>{NAME}</p><h2>{i[2]}</h2><p>{i[3]}</p>{form(l, i)}<p>E-Mail{COL(l)}<a href="mailto:{MAIL}">{MAIL}</a></p></section>'
+    f'<section id="{l}" lang="{l}"><h1>{i[0]}</h1><h2>{i[1]}</h2><p>Corsinura<br>{NAME}</p><h2>{i[2]}</h2><p>{i[3]}</p>{form(l, i)}<p>E-Mail{COL(l)}<a href="mailto:{MAIL}">{MAIL}</a></p></section>'
     for l, i in IMP.items())
 open('impressum.html', 'w').write(page('Corsinura: Impressum / Legal notice', body))
 print('ok')
