@@ -21,3 +21,7 @@ p, li { color: var(--ink); }
 .muted { color: var(--muted); font-size: .9em; }
 a { color: var(--accent); }
 footer { margin-top: 32px; font-size: .9em; color: var(--muted); display: flex; gap: 16px; flex-wrap: wrap; }
+form.contact { display: grid; gap: 12px; margin: 12px 0; }
+form.contact label { display: grid; gap: 4px; font-weight: 600; font-size: .95em; }
+form.contact input, form.contact textarea { font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); }
+form.contact button { justify-self: start; font: inherit; font-weight: 700; padding: 10px 20px; border: 0; border-radius: 999px; background: var(--accent); color: #fff; cursor: pointer; }
