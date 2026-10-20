@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Erzeugt index.html und datenschutz.html (4 Sprachen) – Quelle der Texte ist diese Datei."""
 import html
-DATE = {'de': '17. Oktober 2026', 'en': '17 October 2026', 'fr': '17 octobre 2026', 'es': '17 de octubre de 2026'}
+DATE = {'de': '21. Oktober 2026', 'en': '21 October 2026', 'fr': '21 octobre 2026', 'es': '21 de octubre de 2026'}
 MAIL = 'corsinura.app@gmail.com'
-FORM = ''  # Formspree-Formular-ID (z. B. 'xyzabcd'); leer: nur E-Mail
+FORM = 'xwlvdqnq'  # Formspree-Formular-ID (z. B. 'xyzabcd'); leer: nur E-Mail
 NAME = 'Abdul Karim Alawa'
 COL = lambda l: '\u202f: ' if l == 'fr' else ': '
 NAMES = {'de': 'Deutsch', 'en': 'English', 'fr': 'Français', 'es': 'Español'}
@@ -75,6 +75,16 @@ def page(title, body, lang='de'):
 {body}
 </div></body></html>
 '''
+# Kontaktformular (Impressum): Formspree
+FS = {
+'de': ('Kontaktformular', 'Wenn du uns über das Kontaktformular im Impressum schreibst, werden deine E-Mail-Adresse und deine Nachricht über den Dienst Formspree (Formspree Inc., USA) an uns weitergeleitet. Formspree verarbeitet die Daten in unserem Auftrag; die Übermittlung in die USA erfolgt auf Grundlage der EU-Standardvertragsklauseln. Wir verwenden die Angaben nur, um deine Anfrage zu bearbeiten (Art. 6 Abs. 1 lit. f DSGVO), und löschen sie, wenn sie dafür nicht mehr benötigt werden. Alternativ kannst du uns direkt per E-Mail schreiben.'),
+'en': ('Contact form', 'If you write to us via the contact form in the legal notice, your e-mail address and message are forwarded to us by the service Formspree (Formspree Inc., USA). Formspree processes the data on our behalf; the transfer to the USA is based on the EU standard contractual clauses. We use the data only to handle your request (Art. 6(1)(f) GDPR) and delete it when it is no longer needed. You can also write to us directly by e-mail.'),
+'fr': ('Formulaire de contact', 'Si tu nous écris via le formulaire de contact des mentions légales, ton adresse e-mail et ton message nous sont transmis par le service Formspree (Formspree Inc., États-Unis). Formspree traite les données pour notre compte ; le transfert vers les États-Unis repose sur les clauses contractuelles types de l’UE. Nous utilisons ces données uniquement pour traiter ta demande (art. 6, par. 1, point f du RGPD) et les supprimons lorsqu’elles ne sont plus nécessaires. Tu peux aussi nous écrire directement par e-mail.'),
+'es': ('Formulario de contacto', 'Si nos escribes con el formulario de contacto del aviso legal, tu dirección de correo y tu mensaje nos llegan a través del servicio Formspree (Formspree Inc., EE. UU.). Formspree trata los datos por encargo nuestro; la transferencia a EE. UU. se basa en las cláusulas contractuales tipo de la UE. Usamos los datos solo para tramitar tu solicitud (art. 6.1.f del RGPD) y los borramos cuando ya no son necesarios. También puedes escribirnos directamente por correo.')}
+if FORM:
+    for l, x in FS.items():
+        sec = P[l]['sec']; i = next(k for k, (h, _) in enumerate(sec) if 'mail' in h.lower() or 'correo' in h.lower())
+        sec.insert(i + 1, x)
 nav = '<nav class="lang">' + ''.join(f'<a href="#{l}">{NAMES[l]}</a>' for l in P) + '</nav>'
 body = nav + ''.join(
     f'<section id="{l}" lang="{l}"><h1>{p["title"]}</h1><p>{p["intro"]}</p>' + ''.join(f'<h2>{h}</h2><p>{t}</p>' for h, t in p['sec']) + f'<p class="muted">{p["stand"]}{COL(l)}{DATE[l]}</p></section>'
