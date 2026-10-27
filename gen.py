@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Erzeugt index.html und datenschutz.html (4 Sprachen) – Quelle der Texte ist diese Datei."""
+"""Erzeugt index.html, datenschutz.html, impressum.html und pneumo/ (Corsinura Pneumo) in 4 Sprachen – Quelle der Texte ist diese Datei."""
 import html
 DATE = {'de': '21. Oktober 2026', 'en': '21 October 2026', 'fr': '21 octobre 2026', 'es': '21 de octubre de 2026'}
+DATE_PN = {'de': '27. Oktober 2026', 'en': '27 October 2026', 'fr': '27 octobre 2026', 'es': '27 de octubre de 2026'}
 MAIL = 'corsinura.app@gmail.com'
 FORM = 'xwlvdqnq'  # Formspree-Formular-ID (z. B. 'xyzabcd'); leer: nur E-Mail
 NAME = 'Abdul Karim Alawa'
@@ -94,6 +95,55 @@ body = nav + ''.join(
     f'<section id="{l}" lang="{l}"><h1>{h[0]}</h1><p>{h[1]}</p><footer><a href="datenschutz.html#{l}">{h[2]}</a><a href="impressum.html">{h[3]}</a><a href="mailto:{MAIL}">{h[4]}</a></footer></section>'
     for l, h in HOME.items())
 open('index.html', 'w').write(page('Corsinura', body))
+# ---------- Corsinura Pneumo (Ordner pneumo/) ----------
+import copy, os
+PN_INTRO = {
+ 'de': 'Corsinura Pneumo ist eine Lern-App für Pneumologie (Lungengeräusche, Röntgen und CT, Lungenfunktion). Sie funktioniert ohne Konto und ohne Anmeldung. Wir haben die App so gebaut, dass möglichst keine personenbezogenen Daten anfallen.',
+ 'en': 'Corsinura Pneumo is a pulmonology learning app (lung sounds, X-ray and CT, lung function). It works without an account or sign-in. We built the app so that as little personal data as possible is involved.',
+ 'fr': 'Corsinura Pneumo est une application d’apprentissage de la pneumologie (bruits respiratoires, radio et scanner, EFR). Elle fonctionne sans compte ni connexion. Nous l’avons conçue pour traiter le moins possible de données personnelles.',
+ 'es': 'Corsinura Pneumo es una aplicación para aprender neumología (ruidos respiratorios, radiografía y TC, función pulmonar). Funciona sin cuenta ni registro. La hemos diseñado para que se traten los menos datos personales posibles.'}
+PN_REPL = {
+ 'de': [('eigene EKG-Bilder oder Herzton-Aufnahmen', 'eigene Lungengeräusche, Röntgen- oder CT-Bilder'),
+        ('über „Thema wünschen“ oder „Aufnahme beisteuern“', 'über „Thema wünschen“, „Fehler melden“ oder „Per E-Mail schicken“ (Aufnahmen und Bilder beisteuern)'),
+        ('Themenwünsche und Aufnahmen per E-Mail', 'Themenwünsche, Aufnahmen und Fehlermeldungen per E-Mail')],
+ 'en': [('your own ECG images or heart sound recordings', 'your own lung sounds, X-ray or CT images'),
+        ('via “Request a topic” or “Contribute a recording”', 'via “Request a topic”, “Report a bug” or “Send by email” (contribute recordings and images)'),
+        ('Topic requests and recordings by e-mail', 'Topic requests, recordings and error reports by e-mail')],
+ 'fr': [('vos propres images d’ECG ou enregistrements de bruits du cœur', 'vos propres bruits respiratoires, images de radio ou de scanner'),
+        ('via « Proposer un thème » ou « Proposer un enregistrement »', 'via « Proposer un thème », « Signaler un bug » ou « Envoyer par e-mail » (proposer des enregistrements et des images)'),
+        ('Propositions de thèmes et enregistrements par e-mail', 'Propositions de thèmes, enregistrements et signalements d’erreurs par e-mail')],
+ 'es': [('tus propias imágenes de ECG o grabaciones de ruidos cardiacos', 'tus propios ruidos respiratorios, radiografías o imágenes de TC'),
+        ('con «Pedir un tema» o «Aportar una grabación»', 'con «Pedir un tema», «Informar de un error» o «Enviar por correo» (aportar grabaciones e imágenes)'),
+        ('con «Guardar progreso» en los ajustes', 'con «Copia de seguridad del progreso» en los ajustes'),
+        ('Peticiones de temas y grabaciones por correo', 'Peticiones de temas, grabaciones e informes de errores por correo')]}
+PN = copy.deepcopy(P)
+for l, p in PN.items():
+    p['intro'] = PN_INTRO[l]
+    secs = []
+    for h, t in p['sec']:
+        for a, b in PN_REPL[l]:
+            h = h.replace(a, b); t = t.replace(a, b)
+        secs.append((h, t.replace('href="impressum.html"', 'href="../impressum.html"')))
+    p['sec'] = secs
+    for a, b in PN_REPL[l]:
+        assert any(b in h or b in t for h, t in secs), (l, b)
+PN_HOME = {
+ 'de': ('Pneumologie verstehen. Mit echten Lungengeräuschen, Röntgen und CT.', 'Lern-App für Android: echte Lungengeräusche mit Wellenform, Röntgen- und CT-Bilder mit CT-Serien, Lungenfunktion mit Fluss-Volumen-Labor, Blutgasanalyse, Rechner und Scores, Kurse, Quiz und Prüfungsmodus. Offline nutzbar, ohne Konto.'),
+ 'en': ('Understand pulmonology. With real lung sounds, X-rays and CT.', 'Learning app for Android: real lung sounds with waveform, X-ray and CT images with CT series, lung function with a flow-volume lab, blood gas analysis, calculators and scores, courses, quizzes and exam mode. Works offline, no account.'),
+ 'fr': ('Comprendre la pneumologie. Avec de vrais bruits respiratoires, radios et scanners.', 'Application d’apprentissage pour Android : vrais bruits respiratoires avec forme d’onde, images de radio et de scanner avec séries de coupes, EFR avec labo débit-volume, gaz du sang, calculateurs et scores, cours, quiz et mode examen. Hors ligne, sans compte.'),
+ 'es': ('Entender la neumología. Con ruidos respiratorios, radiografías y TC reales.', 'Aplicación de aprendizaje para Android: ruidos respiratorios reales con forma de onda, radiografías e imágenes de TC con series, función pulmonar con laboratorio de flujo-volumen, gasometría, calculadoras y escalas, cursos, quiz y modo examen. Sin conexión y sin cuenta.')}
+def page_pn(title, body, lang='de'):
+    return (page(title, body, lang).replace('href="style.css">', 'href="../style.css"><style>:root{--accent:#1f6a80}@media (prefers-color-scheme:dark){:root{--accent:#4fb3c9}}</style>').replace('src="img/logo.png"', 'src="../img/pneumo.png"')
+            .replace('href="img/logo.png"', 'href="../img/pneumo.png"').replace('<a href="./">Corsinura</a>', '<a href="./">Corsinura Pneumo</a>'))
+os.makedirs('pneumo', exist_ok=True)
+body = nav + ''.join(
+    f'<section id="{l}" lang="{l}"><h1>{p["title"]}</h1><p>{p["intro"]}</p>' + ''.join(f'<h2>{h}</h2><p>{t}</p>' for h, t in p['sec']) + f'<p class="muted">{p["stand"]}{COL(l)}{DATE_PN[l]}</p></section>'
+    for l, p in PN.items())
+open('pneumo/datenschutz.html', 'w').write(page_pn('Corsinura Pneumo: Datenschutz / Privacy', body))
+body = nav + ''.join(
+    f'<section id="{l}" lang="{l}"><h1>{h[0]}</h1><p>{h[1]}</p><footer><a href="datenschutz.html#{l}">{HOME[l][2]}</a><a href="../impressum.html">{HOME[l][3]}</a><a href="mailto:{MAIL}">{HOME[l][4]}</a></footer></section>'
+    for l, h in PN_HOME.items())
+open('pneumo/index.html', 'w').write(page_pn('Corsinura Pneumo', body))
 # Impressum / Kontakt (Adresse folgt am Ende der Alpha-Phase)
 IMP = {
 'de': ('Impressum', 'Anbieter', 'Kontakt', 'Schreib uns über das Formular oder per E-Mail.', 'Deine E-Mail-Adresse', 'Nachricht', 'Senden', 'Die Angaben aus dem Formular werden über den Dienst Formspree (Formspree Inc., USA) an uns weitergeleitet und nur zur Bearbeitung deiner Anfrage verwendet.'),
